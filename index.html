@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#48b8f5" />
+  <meta
+    name="description"
+    content="A little Doraemon-style birthday surprise made just for Madhu."
+  />
+
+  <title>Madhu's Birthday | Doraemon Magic 💙</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Keep the CSS folder name exactly as it is in your project -->
+  <link rel="stylesheet" href="./csss/style.css" />
+</head>
+
+<body>
+  <!-- Background decoration -->
+  <div class="stars" aria-hidden="true"></div>
+
+  <div class="cartoon-cloud cloud-left" aria-hidden="true">☁️</div>
+  <div class="cartoon-cloud cloud-right" aria-hidden="true">☁️</div>
+
+  <main class="page">
+
+    <!-- Top label -->
+    <div class="top-label">
+      <span class="status-dot"></span>
+      A LITTLE MAGIC FOR YOU 💙
+    </div>
+
+    <!-- Birthday hero section -->
+    <section class="hero">
+
+      <p class="eyebrow">💙 10 · 10 · YOUR SPECIAL DAY 💙</p>
+
+      <!-- Doraemon-inspired face made with CSS -->
+      <div
+        class="doraemon-face"
+        role="img"
+        aria-label="A cute blue Doraemon-inspired smiling face"
+      >
+        <div class="white-face"></div>
+
+        <div class="dora-eye eye-left">
+          <span></span>
+        </div>
+
+        <div class="dora-eye eye-right">
+          <span></span>
+        </div>
+
+        <div class="dora-nose"></div>
+        <div class="nose-line"></div>
+
+        <div class="dora-mouth"></div>
+
+        <div class="whiskers whiskers-left">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+        <div class="whiskers whiskers-right">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+        <div class="dora-collar"></div>
+        <div class="dora-bell"></div>
+      </div>
+
+      <h1>
+        Happy Birthday,<br />
+        <span>Madhu! 💙</span>
+      </h1>
+
+      
+        <!-- Doraemon Birthday Theme Music -->
+        <div class="music-player">
+        <p class="music-label">🎵 A little Doraemon magic</p>
+
+        <audio id="birthdaySong" loop>
+            <source
+            src="./audio/doraemon-theme.mp3"
+            type="audio/mpeg"
+            />
+            Your browser does not support audio.
+        </audio>
+
+        <button type="button" class="secondary-btn" id="musicBtn">
+            ▶ Play Doraemon Song 💙
+        </button>
+        </div>
+
+      <p class="intro">
+        Doraemon ki duniya jaisi magical ho tumhari life,
+        <br />
+        full of happiness, smiles, and beautiful surprises! ✨
+      </p>
+
+      <button class="primary-btn" id="startBtn">
+        Open your surprise 💌
+        <span aria-hidden="true">✦</span>
+      </button>
+
+      <p class="tiny-note">
+        Made with care, one line of code at a time. 💙
+      </p>
+
+    </section>
+
+    <!-- Birthday surprise section -->
+    <section
+      class="surprise hidden"
+      id="surprise"
+      aria-live="polite"
+    >
+
+      <div class="divider">
+        <span>✧ 💙 ✧</span>
+      </div>
+
+      <p class="eyebrow">A LITTLE MAGIC FROM DORAEMON</p>
+
+      <h2>
+        Your little moment<br />
+        of <span>magic.</span>
+      </h2>
+
+      <!-- Birthday cake -->
+      <div class="cake-area">
+        <div class="glow"></div>
+
+        <div
+          class="cake"
+          id="cake"
+          role="button"
+          tabindex="0"
+          aria-label="Tap the birthday cake to make a wish"
+        >
+          <div class="flame" id="flame"></div>
+          <div class="candle"></div>
+          <div class="icing"></div>
+          <div class="cake-top"></div>
+
+          <div class="cake-body">
+            <span class="cake-decoration">♥</span>
+            <span class="cake-decoration">✦</span>
+            <span class="cake-decoration">♥</span>
+          </div>
+
+          <div class="cake-base"></div>
+        </div>
+      </div>
+
+      <p class="cake-hint" id="cakeHint">
+        Make a wish, then tap the cake ✨
+      </p>
+
+      <button class="secondary-btn" id="wishBtn">
+        Make a wish ✨
+      </button>
+
+      <!-- Personal birthday message -->
+      <div class="message-card hidden" id="messageCard">
+
+        <div class="card-sparkle">✦ 💙 ✦</div>
+
+        <h3>Dear Madhu, 💌</h3>
+
+        <p>
+          Happy Birthday, Madhu! ❤️🎂
+
+          <br /><br />
+
+          Some people hold a special place in our lives, and their
+          happiness genuinely matters to us. Today, I wish you a life
+          filled with happiness, peaceful days, beautiful surprises,
+          and countless reasons to smile. May all the dreams you hold
+          close to your heart come true. ✨💗
+
+          <br /><br />
+
+          No matter what life brings your way, I hope you always find
+          reasons to believe in yourself, keep chasing your dreams,
+          and never forget how much goodness you deserve. May your
+          smile never fade, and may this new year of your life bring
+          you beautiful memories and moments that make you genuinely
+          happy. 🌷
+
+          <br /><br />
+
+          Today is all about you, so enjoy every little moment, laugh
+          a little louder, do the things you love, and make memories
+          worth keeping. I genuinely hope the year ahead brings you
+          peace, growth, happiness, and everything your heart wishes
+          for. 🫶🏻
+
+          <br /><br />
+
+          Once again, Happy Birthday, Madhu! ❤️ Keep smiling, take
+          care of yourself, and keep becoming the person you've always
+          dreamed of being.
+
+          <br /><br />
+
+          May your life always have a little Doraemon magic —
+          unexpected happiness, wonderful adventures, and reasons
+          to smile every day. 💙✨
+        </p>
+
+        <div class="signature">
+          Made with care, just for your birthday. 💜
+        </div>
+
+      </div>
+
+      <p class="footer-note">
+        A small surprise. A sincere wish. No expectations. 💙
+      </p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>MADHU.exe 💙</span>
+      <span>Doraemon Birthday Edition · 10.10</span>
+    </footer>
+
+  </main>
+
+  <!-- Confetti animation canvas -->
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <!-- Keep your existing JavaScript file -->
+  <script src="./js/script.js"></script>
+</body>
+</html>
+

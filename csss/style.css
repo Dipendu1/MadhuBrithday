@@ -1,0 +1,798 @@
+:root {
+  --bg: #10091f;
+  --purple: #b99aff;
+  --pink: #ffb4d7;
+  --text: #f8f3ff;
+  --muted: #b6a9c9;
+  --panel: rgba(255, 255, 255, 0.055);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 12%, #38205a 0%, transparent 42%),
+    radial-gradient(ellipse at 10% 80%, #281441 0%, transparent 40%),
+    var(--bg);
+  font-family: "DM Sans", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  position: relative;
+  width: min(100% - 32px, 760px);
+  margin: 0 auto;
+  padding: 28px 0 20px;
+  z-index: 1;
+}
+
+.top-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #d7c8ed;
+  font-size: 10px;
+  letter-spacing: 2.4px;
+  text-align: center;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9effc5;
+  box-shadow: 0 0 12px #9effc5;
+}
+
+.hero {
+  min-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 45px 0;
+  animation: appear 1s ease both;
+}
+
+.eyebrow {
+  color: var(--purple);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 16px 0;
+  font-size: clamp(46px, 10vw, 78px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+h1 span, h2 span {
+  color: var(--pink);
+  font-style: italic;
+  text-shadow: 0 0 35px rgba(255, 180, 215, 0.22);
+}
+
+.intro {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 12px 0 28px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primary-btn {
+  padding: 15px 25px;
+  color: #20102f;
+  font-weight: 700;
+  background: linear-gradient(110deg, #e3c7ff, #ffc6df);
+  box-shadow: 0 0 30px rgba(207, 159, 255, 0.18);
+}
+
+.primary-btn span {
+  margin-left: 8px;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 32px rgba(207, 159, 255, 0.3);
+}
+
+.tiny-note {
+  color: #89799e;
+  font-size: 11px;
+  margin-top: 22px;
+}
+
+.surprise {
+  text-align: center;
+  padding: 10px 0 60px;
+  animation: appear 0.9s ease both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--pink);
+  margin: 0 auto 30px;
+  max-width: 220px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #8b67ad);
+}
+
+.divider::after {
+  background: linear-gradient(90deg, #8b67ad, transparent);
+}
+
+h2 {
+  font-size: clamp(35px, 7vw, 52px);
+  line-height: 1.2;
+  margin: 14px 0;
+}
+
+.cake-area {
+  position: relative;
+  width: 220px;
+  height: 190px;
+  margin: 22px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glow {
+  position: absolute;
+  width: 170px;
+  height: 110px;
+  background: #bd75ff;
+  filter: blur(70px);
+  opacity: 0.18;
+}
+
+.cake {
+  position: relative;
+  width: 140px;
+  height: 130px;
+  margin-top: 20px;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.candle {
+  position: absolute;
+  top: 3px;
+  left: 67px;
+  height: 30px;
+  width: 7px;
+  border-radius: 4px 4px 1px 1px;
+  background: repeating-linear-gradient(
+    135deg, #fff1fa 0 5px, #ff9ecb 5px 10px
+  );
+  z-index: 3;
+}
+
+.flame {
+  position: absolute;
+  top: -13px;
+  left: 66px;
+  width: 10px;
+  height: 16px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #ffe79a;
+  box-shadow: 0 0 18px #ffb74d;
+  z-index: 4;
+  animation: flicker 0.7s ease-in-out infinite alternate;
+  transition: opacity 0.2s ease;
+}
+
+.icing {
+  position: absolute;
+  top: 29px;
+  left: 15px;
+  width: 110px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffd7eb;
+  z-index: 2;
+}
+
+.cake-top {
+  position: absolute;
+  top: 35px;
+  left: 15px;
+  width: 110px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f3a8d0;
+  z-index: 1;
+}
+
+.cake-body {
+  position: absolute;
+  top: 43px;
+  left: 15px;
+  width: 110px;
+  height: 55px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: linear-gradient(100deg, #8d4fa9, #b56ab5, #7b438f);
+  border-radius: 0 0 9px 9px;
+  box-shadow: inset 0 -8px 0 rgba(42, 13, 54, 0.15);
+}
+
+.cake-decoration {
+  color: #ffd9ef;
+  font-size: 16px;
+}
+
+.cake-base {
+  position: absolute;
+  left: 7px;
+  top: 96px;
+  width: 126px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e0a1df;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.cake-hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 18px;
+}
+
+.secondary-btn {
+  padding: 12px 23px;
+  color: var(--text);
+  background: rgba(195, 158, 255, 0.13);
+  border: 1px solid rgba(207, 177, 255, 0.32);
+}
+
+.message-card {
+  position: relative;
+  max-width: 540px;
+  margin: 38px auto 0;
+  padding: 32px clamp(20px, 6vw, 42px);
+  border: 1px solid rgba(210, 181, 255, 0.18);
+  border-radius: 22px;
+  background: var(--panel);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  animation: appear 0.9s ease both;
+}
+
+.card-sparkle {
+  color: var(--pink);
+  font-size: 24px;
+  text-align: center;
+}
+
+.message-card h3 {
+  text-align: center;
+  font-size: 28px;
+  margin: 15px 0 22px;
+}
+
+.message-card p {
+  color: #ded3ed;
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.signature {
+  margin-top: 25px;
+  color: var(--pink);
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.footer-note {
+  margin-top: 35px;
+  color: #a696bc;
+  font-size: 12px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 18px 0;
+  color: #8f7da5;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 80% 30%, #d7b9ff, transparent),
+    radial-gradient(1px 1px at 40% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 65% 85%, #ffbddc, transparent),
+    radial-gradient(1px 1px at 90% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 22% 88%, #c9b0ff, transparent);
+  background-size: 320px 320px;
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes flicker {
+  from { transform: rotate(-45deg) scale(1); }
+  to { transform: rotate(-40deg) scale(1.12); }
+}
+
+@media (max-width: 480px) {
+  .page { width: min(100% - 26px, 760px); }
+  .hero { min-height: 76vh; }
+  .top-label { font-size: 9px; letter-spacing: 1.8px; }
+  footer { font-size: 9px; }
+  .message-card { border-radius: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Responsive Birthday Message Card */
+
+.message-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 32px;
+  border-radius: 20px;
+  overflow-wrap: break-word;
+}
+
+.message-card h3 {
+  font-size: clamp(22px, 4vw, 30px);
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.message-card p {
+  font-size: clamp(14px, 2.5vw, 17px);
+  line-height: 1.9;
+  overflow-wrap: break-word;
+}
+
+.message-card .signature {
+  margin-top: 24px;
+  font-size: clamp(13px, 2.5vw, 16px);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile screens */
+@media screen and (max-width: 600px) {
+  .message-card {
+    width: calc(100% - 28px);
+    max-width: none;
+    margin: 16px auto;
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .message-card h3 {
+    font-size: 23px;
+    margin-bottom: 16px;
+  }
+
+  .message-card p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .message-card .signature {
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 360px) {
+  .message-card {
+    width: calc(100% - 20px);
+    padding: 18px 14px;
+  }
+
+  .message-card h3 {
+    font-size: 21px;
+  }
+
+  .message-card p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+}
+
+/* Prevent unwanted horizontal scrolling */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.cartoon-cloud {
+  position: absolute;
+  z-index: 0;
+  font-size: clamp(38px, 8vw, 75px);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: cloudFloat 6s ease-in-out infinite alternate;
+}
+
+.cloud-left {
+  top: 100px;
+  left: 2%;
+}
+
+.cloud-right {
+  top: 220px;
+  right: 2%;
+  animation-delay: -3s;
+}
+
+@keyframes cloudFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(12px); }
+}
+
+
+
+
+/* =================================
+   DORAEMON CSS FACE + ANIMATIONS
+   ================================= */
+
+.doraemon-face {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+  margin: 22px auto 28px;
+  border: 5px solid #087bb4;
+  border-radius: 50%;
+  background: #16b9f4;
+  box-shadow:
+    0 10px 30px rgba(0, 174, 239, 0.28),
+    inset -8px -8px 0 rgba(0, 80, 150, 0.12);
+  transform-origin: center center;
+  animation: doraemonBounce 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* White face */
+.doraemon-face .white-face {
+  position: absolute;
+  width: 174px;
+  height: 137px;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  border-radius: 48% 48% 45% 45%;
+  background: #fff;
+  border: 2px solid #e4f5ff;
+  z-index: 1;
+}
+
+/* Eyes */
+.doraemon-face .dora-eye {
+  position: absolute;
+  top: 37px;
+  width: 29px;
+  height: 42px;
+  border: 2px solid #222;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 3;
+  transform-origin: center bottom;
+  animation: doraemonBlink 4s infinite;
+}
+
+.doraemon-face .eye-left {
+  left: 76px;
+}
+
+.doraemon-face .eye-right {
+  right: 76px;
+}
+
+.doraemon-face .dora-eye span {
+  position: absolute;
+  width: 9px;
+  height: 15px;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #171717;
+}
+
+/* Red nose */
+.doraemon-face .dora-nose {
+  position: absolute;
+  top: 76px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateX(-50%);
+  border: 2px solid #d62e42;
+  border-radius: 50%;
+  background: #ff334e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  animation: doraemonNose 2s ease-in-out infinite;
+}
+
+/* Line from nose */
+.doraemon-face .nose-line {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  width: 3px;
+  height: 28px;
+  transform: translateX(-50%);
+  background: #333;
+  z-index: 4;
+}
+
+/* Smile */
+.doraemon-face .dora-mouth {
+  position: absolute;
+  top: 101px;
+  left: 50%;
+  width: 104px;
+  height: 44px;
+  transform: translateX(-50%);
+  border-bottom: 4px solid #333;
+  border-radius: 0 0 55% 55%;
+  z-index: 3;
+}
+
+/* Whiskers */
+.doraemon-face .whiskers {
+  position: absolute;
+  top: 100px;
+  width: 53px;
+  height: 35px;
+  z-index: 4;
+}
+
+.doraemon-face .whiskers-left {
+  left: 10px;
+}
+
+.doraemon-face .whiskers-right {
+  right: 10px;
+}
+
+.doraemon-face .whiskers i {
+  position: absolute;
+  display: block;
+  width: 43px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.whiskers-left i:nth-child(1) {
+  top: 2px;
+  transform: rotate(12deg);
+}
+
+.whiskers-left i:nth-child(2) {
+  top: 13px;
+}
+
+.whiskers-left i:nth-child(3) {
+  top: 24px;
+  transform: rotate(-12deg);
+}
+
+.whiskers-right i:nth-child(1) {
+  top: 2px;
+  transform: rotate(-12deg);
+}
+
+.whiskers-right i:nth-child(2) {
+  top: 13px;
+}
+
+.whiskers-right i:nth-child(3) {
+  top: 24px;
+  transform: rotate(12deg);
+}
+
+/* Red collar */
+.doraemon-face .dora-collar {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 150px;
+  height: 12px;
+  transform: translateX(-50%);
+  border: 2px solid #c92d45;
+  border-radius: 10px;
+  background: #f6324f;
+  z-index: 6;
+}
+
+/* Golden bell */
+.doraemon-face .dora-bell {
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 25px;
+  height: 25px;
+  transform: translateX(-50%);
+  border: 2px solid #b87900;
+  border-radius: 50%;
+  background: #ffd447;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18);
+  transform-origin: top center;
+  z-index: 7;
+  animation: doraemonBell 0.7s ease-in-out infinite alternate;
+}
+
+.doraemon-face .dora-bell::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 9px;
+  height: 3px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #9c6500;
+}
+
+/* Animations */
+@keyframes doraemonBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes doraemonBlink {
+  0%, 44%, 48%, 100% {
+    transform: scaleY(1);
+  }
+  46% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes doraemonNose {
+  0%, 100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -2px;
+  }
+}
+
+@keyframes doraemonBell {
+  from {
+    rotate: -12deg;
+  }
+  to {
+    rotate: 12deg;
+  }
+}
+
+/* Floating clouds */
+.cartoon-cloud {
+  animation: doraemonCloudFloat 4s ease-in-out infinite alternate;
+}
+
+.cloud-right {
+  animation-delay: -2s;
+}
+
+@keyframes doraemonCloudFloat {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -14px;
+  }
+}
+
+/* Mobile sizing */
+@media (max-width: 480px) {
+  .doraemon-face {
+    transform-origin: center;
+    zoom: 0.9;
+  }
+}
+
+/* Keep animations accessible when reduced motion is requested */
+@media (prefers-reduced-motion: reduce) {
+  .doraemon-face,
+  .doraemon-face *,
+  .cartoon-cloud {
+    animation: none !important;
+  }
+}
